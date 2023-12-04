@@ -251,30 +251,30 @@ class Group(BaseGroup):
     send_signal = models.BooleanField(
     #    initial = None,
         doc="""Whether the worker wants to send costly message""",
-        verbose_name='您打算傳送「我願意投入受訓」的訊息給雇主嗎? 傳送訊息的成本為10法幣。',
+        verbose_name='Do you plan to send the message "I am willing to invest in training" to your employer? The cost of sending the message is 10 French currency. ',
         choices=[
-            [True, '是'],  # Maps True to '是'
-            [False, '否'],  # Maps False to '否'
+            [True, 'is'], # Maps True to 'is'
+            [False, 'No'], # Maps False to 'No'
         ],
     )
     worker_invest = models.BooleanField(
         initial = None,
         doc="""Whether the worker wants to invest""",
         #WW: verbose_name='Do you wish to invest in training?',
-        verbose_name='您打算投入受訓嗎?',
+        verbose_name='Are you planning to get trained?',
         choices=[
-            [True, '是'],  # Maps True to '是'
-            [False, '否'],  # Maps False to '否'
+            [True, 'is'], # Maps True to 'is'
+            [False, 'No'], # Maps False to 'No'
         ],
     )
     firm_hire = models.BooleanField(
         initial = None,
         doc="""Whether the firm wants to hire""",
         ##WW: verbose_name='Do you wish to hire the worker?',
-        verbose_name='您打算錄取求職者嗎?',
+        verbose_name='Are you planning to recruit job seekers?',
         choices=[
-            [True, '是'],  # Maps True to '是'
-            [False, '否'],  # Maps False to '否'
+            [True, 'is'], # Maps True to 'is'
+            [False, 'No'], # Maps False to 'No'
         ],
     )
     firm_investment_belief = models.IntegerField(
@@ -282,7 +282,7 @@ class Group(BaseGroup):
         choices=range(0, 101),
         ##WW: verbose_name='In your view, what is the likelihood that the worker you are paired '
                      ##'with chose to invest in training?',
-        verbose_name='據您估計，配對到的求職者有多高機率會投入受訓?',
+        verbose_name='According to your estimate, what is the probability that the matched job seekers will be involved in training?',
         #widget=widgets.Slider(
         widget = widgets.RadioSelectHorizontal(
            # attrs={'step': '1',
@@ -295,7 +295,7 @@ class Group(BaseGroup):
         choices=range(0, 101),
         ##WW: verbose_name='In your view, what is the likelihood that the firm you are paired '
                      ##'with chose to hire you?',
-        verbose_name='據您估計，配對到的雇主有多高機率會錄取您?',
+        verbose_name='According to your estimate, what is the probability that the employer you are matched with will recruit you?',
        # widget=widgets.Slider(
         widget = widgets.RadioSelectHorizontal(
          #   attrs={'step': '1',
@@ -306,7 +306,7 @@ class Group(BaseGroup):
     task_1 = models.IntegerField(
         initial=-1,
         choices=range(0, 201),
-        verbose_name='請問您打算把多少法幣投入抽獎?',
+        verbose_name='How much legal currency do you plan to put into the lottery?',
        # widget=widgets.Slider(
         widget = widgets.RadioSelectHorizontal(
          #   attrs={'step': '1',
@@ -317,7 +317,7 @@ class Group(BaseGroup):
     task_2 = models.IntegerField(
         initial=-1,
         choices=range(0, 201),
-        verbose_name='請問您打算把多少法幣投入抽獎?',
+        verbose_name='How much legal currency do you plan to put into the lottery?',
        # widget=widgets.Slider(
         widget = widgets.RadioSelectHorizontal(
          #   attrs={'step': '1',

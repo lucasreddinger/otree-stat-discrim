@@ -4,7 +4,7 @@ $(function () {
             type: 'column'
         },
         title: {
-            text: '投資率'
+            text: 'Investment rate'
         },
         subtitle: {
             text: ''

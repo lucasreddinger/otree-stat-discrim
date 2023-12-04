@@ -60,7 +60,7 @@ SESSION_CONFIG_DEFAULTS = {
 # Additional oTree configurations and settings go here
 LANGUAGE_CODE = 'zh-tw'
 USE_POINTS = True
-POINTS_CUSTOM_NAME = '法幣'
+POINTS_CUSTOM_NAME = 'fiat currency'
 SECRET_KEY = ''
 if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
     DEBUG = False

@@ -4,7 +4,7 @@ $(function () {
             type: 'column'
         },
         title: {
-            text: '錄取率'
+            text: 'Admission rate'
         },
         subtitle: {
             text: ''

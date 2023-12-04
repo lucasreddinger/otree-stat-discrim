@@ -5,54 +5,54 @@
 
 
 {% block title %}
-    第 {{ stage_num }} 階段: 第 {{ stage_round }} 回合
+    Stage {{ stage_num }}: Round {{ stage_round }}
 {% endblock %}
 
 {% block content %}
     {% if player.id_in_group == 1 %}
         {% if group.worker_invest %}
-            <p>您決定投入受訓。</p>
+            <p>You decide to commit to training. </p>
         {% else %}
-            <p>您決定不投入受訓。</p>
+            <p>You decide not to commit to training. </p>
         {% endif %}
 
         {% if group.firm_hire %}
-            <p>雇主決定錄取您。</p>
+            <p>The employer decides to recruit you. </p>
         {% else %}
-            <p>雇主決定不錄取您。</p>
+            <p>The employer has decided not to admit you. </p>
         {% endif %}
         {%  if group.use_worker_belief %}
-            <p><b>您於本回合獲得 {{ worker_normal_payoff }}, 外加來自機率估計的 {{ worker_belief_payoff }}, 總共是 {{ worker_payoff }}。</b></p>
+            <p><b>You get {{ worker_normal_payoff }} this round, plus {{ worker_belief_payoff }} from the probability estimate, for a total of {{ worker_payoff }}. </b></p>
         {% else %}
-            <p><b>您於本回合獲得 {{ worker_payoff }}。</b></p>
+            <p><b>You receive {{ worker_payoff }} this round. </b></p>
         {% endif%}
         {%  if group.use_firm_belief %}
-            <p>雇主獲得 {{ firm_normal_payoff }}, 外加來自機率估計的 {{ firm_belief_payoff }}, 總共是 {{ firm_payoff }}。</p>
+            <p>The employer receives {{ firm_normal_payoff }}, plus {{ firm_belief_payoff }} from the probability estimate, for a total of {{ firm_payoff }}. </p>
         {% else %}
-            <p>雇主獲得 {{ firm_payoff }}。</p>
+            <p>The employer receives {{ firm_payoff }}. </p>
         {% endif%}
     {% else %}
         {% if group.worker_invest %}
-            <p>您配對到{{worker_color}}求職者，對方決定投入受訓。</p>
+            <p>You have been matched with {{worker_color}} job seeker, who has decided to participate in training. </p>
         {% else %}
-            <p>您配對到{{worker_color}}求職者，對方決定不投入受訓。</p>
+            <p>You were matched with {{worker_color}} job seeker, who decided not to participate in training. </p>
         {% endif %}
 
         {% if group.firm_hire %}
-            <p>您決定錄取求職者。</p>
+            <p>You decide to admit the applicant. </p>
         {% else %}
-            <p>您決定不錄取求職者。</p>
+            <p>You decide not to admit the applicant. </p>
         {% endif %}
 
         {%  if group.use_worker_belief %}
-            <p>求職者獲得 {{ worker_normal_payoff}}, 外加來自機率估計的 {{ worker_belief_payoff}}, 總共是 {{ worker_payoff}}。</p>
+            <p>Job seekers receive {{ worker_normal_payoff}}, plus {{ worker_belief_payoff}} from the probability estimate, for a total of {{ worker_payoff}}. </p>
         {% else %}
-            <p>求職者獲得 {{ worker_payoff}}</p>
+            <p>Job seekers receive {{ worker_payoff}}</p>
         {% endif%}
         {%  if group.use_firm_belief %}
-            <p><b>您於本回合獲得 {{ firm_normal_payoff}}, 外加來自機率估計的 {{ firm_belief_payoff}}, 總共是 {{ firm_payoff}}。</b></p>
+            <p><b>You receive {{ firm_normal_payoff}} this round, plus {{ firm_belief_payoff}} from the probability estimate, for a total of {{ firm_payoff}}. </b></p>
         {% else %}
-            <p><b>您於本回合獲得 {{ firm_payoff}}。 </b></p>
+            <p><b>You receive {{ firm_payoff}} this round. </b></p>
         {% endif%}
     {% endif %}
 

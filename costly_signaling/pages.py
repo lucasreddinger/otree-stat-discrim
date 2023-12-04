@@ -188,7 +188,7 @@ class WaitForWorkers(WaitPage):
     wait_for_all_groups = False  # Set this to False to only wait for paired workers
     
     title_text = ""
-    body_text = "請稍待其他玩家做決策，謝謝" 
+    body_text = "Please wait for other players to make decisions, thank you"
     def is_displayed(self):
         third_stage_start = (self.subsession.num_first_stage_rounds + self.subsession.num_second_stage_rounds)
         return self.player.id_in_group == 2 and self.round_number > third_stage_start
@@ -306,7 +306,7 @@ class Worker(Page):
         if third_stage_start < self.round_number:
             worker_choose_send = self.group.send_signal
             if worker_choose_send:
-                worker_send_signal= "您決定向雇主傳送「我會投入受訓」之訊息。"              
+                worker_send_signal= "You have decided to send the message "I will be trained" to your employer. "              
                 table_invest_hire = "{0} - c - 10, {1}".format(str(C.WORKER_HIRE_INVEST), str(C.FIRM_HIRE_INVEST))
                 table_not_invest_hire = "{0} - 10, {1}".format(str(C.WORKER_HIRE_NOT_INVEST),
                                                   str(C.FIRM_HIRE_NOT_INVEST))
@@ -315,7 +315,7 @@ class Worker(Page):
                 table_not_invest_not_hire = "{0} - 10,{1}".format(str(C.WORKER_NOT_HIRE_NOT_INVEST),
                                                      str(C.FIRM_NOT_HIRE_NOT_INVEST))
             else:
-                worker_send_signal= "您決定不向雇主傳送「我會投入受訓」之訊息。"               
+                worker_send_signal= "You have decided not to send the message "I will be trained" to your employer. "               
                 table_invest_hire = "{0} - c, {1}".format(str(C.WORKER_HIRE_INVEST), str(C.FIRM_HIRE_INVEST))
                 table_not_invest_hire = "{0}, {1}".format(str(C.WORKER_HIRE_NOT_INVEST),
                                                   str(C.FIRM_HIRE_NOT_INVEST))
@@ -452,13 +452,13 @@ class Firm(Page):
             stage_num = 1
             stage_round = self.round_number
             #WW:
-            extra_text_type = "您被配對到" + str(self.group.worker_color) + "的求職者。"
+            extra_text_type = "You were paired with a candidate for " + str(self.group.worker_color) + "."
         elif second_stage_start < self.round_number <= third_stage_start:
             green_cost = C.SECOND_COST_OF_TRAINING
             purple_cost = C.SECOND_COST_OF_TRAINING
             stage_num = 2
             stage_round = self.round_number - second_stage_start
-            extra_text_type = "您被配對到" + str(self.group.worker_color) + "的求職者。"
+            extra_text_type = "You were paired with a candidate for " + str(self.group.worker_color) + "."
         elif third_stage_start < self.round_number <= fourth_stage_start:
             green_cost = C.THIRD_COST_OF_TRAINING
             purple_cost = C.THIRD_COST_OF_TRAINING
@@ -477,7 +477,7 @@ class Firm(Page):
         if third_stage_start < self.round_number:            
             worker_choose_send = self.group.send_signal
             if worker_choose_send:
-                firm_see_signal= "您配對到的求職者決定向您傳送「我願意投入受訓」之訊息。"
+                firm_see_signal= "The job seeker you matched has decided to send you the message "I am willing to invest in training". "
                 table_invest_hire = "{0} - c - 10, {1}".format(str(C.WORKER_HIRE_INVEST), str(C.FIRM_HIRE_INVEST))
                 table_not_invest_hire = "{0} - 10, {1}".format(str(C.WORKER_HIRE_NOT_INVEST),
                                                   str(C.FIRM_HIRE_NOT_INVEST))
@@ -486,7 +486,7 @@ class Firm(Page):
                 table_not_invest_not_hire = "{0}-10,{1}".format(str(C.WORKER_NOT_HIRE_NOT_INVEST),
                                                      str(C.FIRM_NOT_HIRE_NOT_INVEST))
             else:
-                firm_see_signal= "您配對到的求職者決定不向您傳送「我願意投入受訓」之訊息。"
+                firm_see_signal= "The candidate you matched has decided not to send you the "I am willing to invest in training" message. "
                 table_invest_hire = "{0} - c, {1}".format(str(C.WORKER_HIRE_INVEST), str(C.FIRM_HIRE_INVEST))
                 table_not_invest_hire = "{0}, {1}".format(str(C.WORKER_HIRE_NOT_INVEST),
                                                   str(C.FIRM_HIRE_NOT_INVEST))
@@ -564,22 +564,22 @@ class Instructions(Page):
         fourth_stage_start = (
             self.subsession.num_first_stage_rounds + self.subsession.num_second_stage_rounds + self.subsession.num_third_stage_rounds)
         if self.round_number == second_stage_start:
-                instructions_text = "您即將進入實驗的第一階段。"
-                instructions_text_2 = "本階段 GREEN 求職者的受訓成本為 200 法幣 (c = 200)，PURPLE 求職者的投資成本為 600 法幣 (c = 600)。"   
+                instructions_text = "You are about to enter the first phase of the experiment."
+                instructions_text_2 = "The training cost for GREEN job seekers at this stage is 200 French currency (c = 200), and the investment cost for PURPLE job seekers is 600 French currency (c = 600)."   
         elif self.round_number == third_stage_start:
-                instructions_text = "您即將進入實驗的第二階段。"
-                instructions_text_2 = "本階段所有求職者的受訓成本為 200 法幣 (c = 200)。"
+                instructions_text = "You are about to enter the second phase of the experiment."
+                instructions_text_2 = "The training cost for all job seekers at this stage is 200 French currency (c = 200)."
         elif self.round_number == fourth_stage_start:
                   #WW: commented out "instructions_text = "You are entering Stage 3 of the experiment.""
-                instructions_text = "您即將進入實驗的第三階段。"
-                instructions_text_2 = "本階段所有求職者的受訓成本為 200 法幣 (c = 200)。"
-                instructions_text_3 = "本階段雇主不會看見配對到的求職者之類別，但求職者可以傳送「我願意投入受訓」的訊息，訊息成本為10法幣。"
+                instructions_text = "You are about to enter the third phase of the experiment."
+                instructions_text_2 = "The training cost for all job seekers at this stage is 200 French currency (c = 200)."
+                instructions_text_3 = "At this stage, the employer will not see the category of the matched job seeker, but the job seeker can send the message "I am willing to invest in training". The message cost is 10 French currency. "
            
         elif self.round_number == self.subsession.num_rounds:
              #WW: commented out "  instructions_text = "You have finished the main portion of the experiment.  You will now be asked to complete two short tasks.  One of these two tasks will be randomly selected for payment.  Your earnings from the randomly selected task will be added to your total earnings from the experiment.""
-                instructions_text = "您即將進入實驗的第四階段。"
-                instructions_text_2 = "本階段所有求職者的受訓成本為 200 法幣 (c = 200)。"
-                instructions_text_3 = "本階段雇主不會看見配對到的求職者之類別，但求職者可以傳送「我願意投入受訓」的訊息，訊息成本為10法幣。"
+                instructions_text = "You are about to enter the fourth phase of the experiment."
+                instructions_text_2 = "The training cost for all job seekers at this stage is 200 French currency (c = 200)."
+                instructions_text_3 = "At this stage, the employer will not see the category of the matched job seeker, but the job seeker can send the message "I am willing to invest in training". The message cost is 10 French currency. "
 
         return {
             'instructions_text': instructions_text,
@@ -590,7 +590,7 @@ class Instructions(Page):
 
 class ResultsWaitPage(WaitPage):
     title_text = ""
-    body_text = "請稍待其他玩家做決策，謝謝!"
+    body_text = "Please wait for other players to make decisions, thank you!"
     def after_all_players_arrive(self):
         self.group.set_payoffs()
 
@@ -598,7 +598,7 @@ class ResultsWaitPage(WaitPage):
 class SessionWideWaitPage(WaitPage):
     wait_for_all_groups = True
     title_text = ""
-    body_text = "請稍待其他玩家做決策，謝謝!"
+    body_text = "Please wait for other players to make decisions, thank you!"
 
 
 class Results(Page):
@@ -643,7 +643,7 @@ class Task_Intro(Page):
     def is_displayed(self):
         return self.round_number == self.subsession.num_rounds
     def vars_for_template(self):
-        task_instructions_text = "接下來，請決定要將多少法幣投入抽獎。"
+        task_instructions_text = "Next, decide how much fiat you want to put into the draw."
         return {
             'task_instructions_text': task_instructions_text
         }

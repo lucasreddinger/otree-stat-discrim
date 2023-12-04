@@ -79,14 +79,14 @@
 {% endblock %}
 
 {% block title %}
-    第 {{ stage_num }} 階段: 第 {{ stage_round }} 回合
+    Stage {{ stage_num }}: Round {{ stage_round }}
 {% endblock %}
 
 {% block content %}
 
-    <p>您的角色是 {{ worker_color }} 求職者。</p>
-    <p>GREEN 求職者的受訓成本為 {{ green_cost }} (c = {{ green_cost }})。</p>
-    <p>PURPLE 求職者的受訓成本為 {{ purple_cost }} (c = {{ purple_cost }})。</p>
+    <p>Your role is {{ worker_color }} job seeker. </p>
+    <p>GREEN The training cost for job seekers is {{ green_cost }} (c = {{ green_cost }}). </p>
+    <p>PURPLE The training cost for job seekers is {{ purple_cost }} (c = {{ purple_cost }}). </p>
     <p>{{ extra_text_green }}</p>
     <p>{{ extra_text_purple }}</p>
     <p>{{worker_send_signal}}</p>
@@ -97,16 +97,16 @@
             <table>
                 <tr align="center">
                     <th>&nbsp;</th>
-                    <th>錄取</th>
-                    <th>不錄取</th>
+                    <th>Admission</th>
+                    <th>Not admitted</th>
                 </tr>
                 <tr align="center">
-                    <th>受訓</th>
+                    <th>Trained</th>
                     <td>{{ table_invest_hire }}</td>
                     <td>{{ table_invest_not_hire }}</td>
                 </tr>
                 <tr align="center">
-                    <th>不受訓</th>
+                    <th>Untrained</th>
                     <td>{{ table_not_invest_hire }}</td>
                     <td>{{ table_not_invest_not_hire }}</td>
                 </tr>
@@ -115,22 +115,22 @@
         <div class="col-1-2">
             <table>
                 <tr align="center">
-                    <th>&nbsp;</th>
-                    <th>平均受訓率</th>
-                    <th>平均錄取率</th>
+                    <th> </th>
+                    <th>Average training rate</th>
+                    <th>Average acceptance rate</th>
                 </tr>
                 <tr align="center">
-                    <th>GREEN 求職者</th>
+                    <th>GREEN job seekers</th>
                     <td>{{ green_invest_rate }}</td>
                     <td>{{ green_hiring_rate }}</td>
                 </tr>
                 <tr align="center">
-                    <th>PURPLE 求職者</th>
+                    <th>PURPLE job seekers</th>
                     <td>{{ purple_invest_rate }}</td>
                     <td>{{ purple_hiring_rate }}</td>
                 </tr>
                 <tr align="center">
-                    <th>全部求職者</th>
+                    <th>All job seekers</th>
                     <td>{{ avg_invest_rate }}</td>
                     <td>{{ avg_hiring_rate }}</td>
                 </tr>
