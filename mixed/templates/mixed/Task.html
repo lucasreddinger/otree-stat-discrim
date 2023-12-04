@@ -1,0 +1,23 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree %}
+
+{% block head_title %}
+    抽獎項目
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-1-2">
+            {% for field in form %}
+                <div class="row">
+                    {% formfield field %}
+                </div>
+            {% endfor %}
+        </div>
+
+    <div class="row">
+        {% next_button %}
+    </div>
+{% endblock %}
+
+

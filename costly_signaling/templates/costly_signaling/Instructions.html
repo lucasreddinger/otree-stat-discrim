@@ -1,0 +1,17 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree %}
+
+{% block head_title %}
+    Instructions說明
+{% endblock %}
+
+{% block content %}
+    <p>{{ instructions_text }}</p>
+    <p>{{ instructions_text_2 }}</p>
+    <p>{{ instructions_text_3 }}</p>
+
+
+    {% next_button %}
+{% endblock %}
+
+

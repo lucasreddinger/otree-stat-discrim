@@ -1,0 +1,74 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree %}
+
+{% block head_title %}
+    抽獎項目
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-1-2">
+            {% for field in form %}
+                <div class="row">
+                    {% formfield field %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row">
+        {% next_button %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            let form = document.getElementById('form');
+
+            // Add the 'novalidate' attribute to the form to suppress default validation messages
+            form.setAttribute('novalidate', '');
+
+            form.addEventListener('submit', function (event) {
+                let incompleteFields = [];
+                let allInputs = form.querySelectorAll('input, select, textarea');
+                let min = 0; // Set your min value
+                let max = 200; // Set your max value
+
+                for (let input of allInputs) {
+                    if (input.hasAttribute('required') && !input.value.trim()) {
+                        incompleteFields.push(input);
+                    }
+
+                //     if (input.name === 'firm_task_2') {
+                //         let inputValue = parseInt(input.value);
+                //         if (isNaN(inputValue) || inputValue < min || inputValue > max) {
+                //             event.preventDefault();
+                //             alert('請填入 0 至 200 的整數');
+                //             return; // Stop further processing if needed
+                //         }
+                //     }
+                // }
+                if (input.name === 'task_2') {
+                            // let inputValue = parseInt(input.value);
+                            if (isNaN(input.value) || input.value < min || input.value > max) {
+                                event.preventDefault();
+                                alert('請填入 0 至 200 的整數');
+                                return; // Stop further processing if needed
+                            }
+                        }
+                if (incompleteFields.length > 0) {
+                    event.preventDefault();
+                    alert('請完整回答再前往下一頁');
+                    // You can customize the error handling further if needed
+                }
+            });
+
+            // Change the text of the "Next" button to "下一頁"
+            let nextButton = document.querySelector('.otree-btn-next');
+            if (nextButton) {
+                nextButton.innerText = '下一頁';
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree %}
+
+{% block head_title %}
+    抽獎項目說明
+{% endblock %}
+
+{% block content %}
+    <p>{{ task_instructions_text_1 }}</p>
+    <p>{{ task_instructions_text_2 }}</p>
+    <p>{{ task_instructions_text_3 }}</p>
+
+
+    {% next_button %}
+{% endblock %}
+
+
