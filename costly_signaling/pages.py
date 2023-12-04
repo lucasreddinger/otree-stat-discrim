@@ -306,7 +306,7 @@ class Worker(Page):
         if third_stage_start < self.round_number:
             worker_choose_send = self.group.send_signal
             if worker_choose_send:
-                worker_send_signal= "You have decided to send the message "I will be trained" to your employer. "              
+                worker_send_signal= "You have decided to send the message \"I will be trained\" to your employer. "              
                 table_invest_hire = "{0} - c - 10, {1}".format(str(C.WORKER_HIRE_INVEST), str(C.FIRM_HIRE_INVEST))
                 table_not_invest_hire = "{0} - 10, {1}".format(str(C.WORKER_HIRE_NOT_INVEST),
                                                   str(C.FIRM_HIRE_NOT_INVEST))
@@ -315,7 +315,7 @@ class Worker(Page):
                 table_not_invest_not_hire = "{0} - 10,{1}".format(str(C.WORKER_NOT_HIRE_NOT_INVEST),
                                                      str(C.FIRM_NOT_HIRE_NOT_INVEST))
             else:
-                worker_send_signal= "You have decided not to send the message "I will be trained" to your employer. "               
+                worker_send_signal= "You have decided not to send the message \"I will be trained\" to your employer. "               
                 table_invest_hire = "{0} - c, {1}".format(str(C.WORKER_HIRE_INVEST), str(C.FIRM_HIRE_INVEST))
                 table_not_invest_hire = "{0}, {1}".format(str(C.WORKER_HIRE_NOT_INVEST),
                                                   str(C.FIRM_HIRE_NOT_INVEST))
@@ -477,7 +477,7 @@ class Firm(Page):
         if third_stage_start < self.round_number:            
             worker_choose_send = self.group.send_signal
             if worker_choose_send:
-                firm_see_signal= "The job seeker you matched has decided to send you the message "I am willing to invest in training". "
+                firm_see_signal= "The job seeker you matched has decided to send you the message \"I am willing to invest in training\". "
                 table_invest_hire = "{0} - c - 10, {1}".format(str(C.WORKER_HIRE_INVEST), str(C.FIRM_HIRE_INVEST))
                 table_not_invest_hire = "{0} - 10, {1}".format(str(C.WORKER_HIRE_NOT_INVEST),
                                                   str(C.FIRM_HIRE_NOT_INVEST))
@@ -486,7 +486,7 @@ class Firm(Page):
                 table_not_invest_not_hire = "{0}-10,{1}".format(str(C.WORKER_NOT_HIRE_NOT_INVEST),
                                                      str(C.FIRM_NOT_HIRE_NOT_INVEST))
             else:
-                firm_see_signal= "The candidate you matched has decided not to send you the "I am willing to invest in training" message. "
+                firm_see_signal= "The candidate you matched has decided not to send you the \"I am willing to invest in training\" message. "
                 table_invest_hire = "{0} - c, {1}".format(str(C.WORKER_HIRE_INVEST), str(C.FIRM_HIRE_INVEST))
                 table_not_invest_hire = "{0}, {1}".format(str(C.WORKER_HIRE_NOT_INVEST),
                                                   str(C.FIRM_HIRE_NOT_INVEST))
@@ -573,13 +573,13 @@ class Instructions(Page):
                   #WW: commented out "instructions_text = "You are entering Stage 3 of the experiment.""
                 instructions_text = "You are about to enter the third phase of the experiment."
                 instructions_text_2 = "The training cost for all job seekers at this stage is 200 French currency (c = 200)."
-                instructions_text_3 = "At this stage, the employer will not see the category of the matched job seeker, but the job seeker can send the message "I am willing to invest in training". The message cost is 10 French currency. "
+                instructions_text_3 = "At this stage, the employer will not see the category of the matched job seeker, but the job seeker can send the message \"I am willing to invest in training\". The message cost is 10 French currency. "
            
         elif self.round_number == self.subsession.num_rounds:
              #WW: commented out "  instructions_text = "You have finished the main portion of the experiment.  You will now be asked to complete two short tasks.  One of these two tasks will be randomly selected for payment.  Your earnings from the randomly selected task will be added to your total earnings from the experiment.""
                 instructions_text = "You are about to enter the fourth phase of the experiment."
                 instructions_text_2 = "The training cost for all job seekers at this stage is 200 French currency (c = 200)."
-                instructions_text_3 = "At this stage, the employer will not see the category of the matched job seeker, but the job seeker can send the message "I am willing to invest in training". The message cost is 10 French currency. "
+                instructions_text_3 = "At this stage, the employer will not see the category of the matched job seeker, but the job seeker can send the message \"I am willing to invest in training\". The message cost is 10 French currency. "
 
         return {
             'instructions_text': instructions_text,
